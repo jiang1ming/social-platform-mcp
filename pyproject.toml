@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.26,<2.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "social-platform-mcp"
+version = "0.1.0"
+description = "Standalone Weibo, Xiaohongshu and Zhihu adapters and MCP stdio server."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["mcp>=2.2,<3.0", "pydantic>=2.13,<3.0", "jsonschema>=4.21,<5.0"]
+
+[project.urls]
+Repository = "https://github.com/jiang1ming/social-platform-mcp"
+Issues = "https://github.com/jiang1ming/social-platform-mcp/issues"
+
+[project.scripts]
+social-platform-mcp = "social_platform_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/social_platform_mcp"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10.0", "pytest-asyncio>=0.24,<2.0"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+testpaths = ["tests"]
+
